@@ -14,6 +14,7 @@ module.exports = {
     'space-before-function-paren': 'off',
     'no-trailing-spaces': 'off',
     'eol-last': 'off',
+    'no-useless-return': 'off',
     // 'import/no-duplicates': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
