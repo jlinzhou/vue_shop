@@ -1,28 +1,29 @@
 import Vue from 'vue'
 import {
-  Button,
-  Form,
-  FormItem,
-  Input,
-  Message,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Menu,
-  Submenu,
-  Breadcrumb,
-  MenuItem,
-  BreadcrumbItem,
-  Card,
-  Row,
-  Col,
-  TableColumn,
-  Table,
-  Switch,
-  Tooltip,
-  Pagination,
-  Dialog
+    Button,
+    Form,
+    FormItem,
+    Input,
+    Message,
+    Container,
+    Header,
+    Aside,
+    Main,
+    Menu,
+    Submenu,
+    Breadcrumb,
+    MenuItem,
+    BreadcrumbItem,
+    Card,
+    Row,
+    Col,
+    TableColumn,
+    Table,
+    Switch,
+    Tooltip,
+    Pagination,
+    Dialog,
+    notification
 } from 'element-ui'
 Vue.use(Button)
 Vue.use(Form)
@@ -47,3 +48,4 @@ Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.prototype.$message = Message
+Vue.prototype.$notify = notification

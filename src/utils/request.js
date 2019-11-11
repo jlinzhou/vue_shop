@@ -2,17 +2,18 @@ import axios from 'axios'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:8888/api/private/v1/', // api 的 base_url
-  withCredentials: true, // 跨域请求时发送 cookies
-  timeout: 5000 // request timeout
+    // baseURL: 'http://localhost:8888/api/private/v1/', // api 的 base_url
+    baseURL: '/api',
+    withCredentials: true, // 跨域请求时发送 cookies
+    timeout: 5000 // request timeout
 })
 
 // request interceptor
 service.interceptors.request.use(
-  config => {
-    config.headers.Authorization = window.sessionStorage.getItem('token')
-    return config
-  }
+    config => {
+        config.headers.Authorization = window.sessionStorage.getItem('token')
+        return config
+    }
 )
 
 // service.interceptors.response.use(
