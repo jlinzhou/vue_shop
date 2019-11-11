@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import { requestList } from '@/api/user'
 export default {
 	data() {
 		var checkEmail = (rule, value, cb) => {
@@ -169,6 +170,7 @@ export default {
 	},
 	components: {},
 	created() {
+		this.getUserList2()
 		this.getUserList()
 	},
 	methods: {
@@ -182,6 +184,14 @@ export default {
 			this.userlist = res.data.users
 			this.total = res.data.total
 			console.log(res)
+		},
+		getUserList2() {
+			requestList(this.queryInfo).then(response => {
+				this.userlist = response.data.users
+				this.total = response.data.total
+				console.log(response)
+				console.log('response')
+			})
 		},
 		handleSizeChange(newSize) {
 			this.queryInfo.pagesize = newSize
