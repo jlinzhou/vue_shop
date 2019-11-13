@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { MessageBox, Message } from 'element-ui'
+import { getToken } from '@/utils/auth'
 // create an axios instance
 const service = axios.create({
     // baseURL: 'http://localhost:8888/api/private/v1/', // api 的 base_url
