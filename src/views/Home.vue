@@ -14,14 +14,15 @@
 			<el-aside :width="isCollapse ? '64px':'200px'">
 				<div class="toggle-button" @click="toggleCollapse">|||</div>
 				<el-menu background-color="#373d41" text-color="#fff" active-text-color="#409eff" :unique-opened="true" :default-active="activePath" :collapse="isCollapse" :collapse-transition="false" router>
-					<el-submenu :index="item.id+''" v-for="item in menulist" :key="item.id">
+					<el-submenu :index="item.meta.id+''" v-for="item in menulist" :key="item.meta.id">
 						<template slot="title">
 							<i :class="iconsObj[item.id]"></i>
-							<span>{{item.authName}}</span>
+							<span>{{item.meta.title}}</span>
 						</template>
-						<el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveNavState('/'+subItem.path)">
+						<!-- <span>{{item.children}}</span> -->
+						<el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.meta.id" @click="saveNavState('/'+subItem.path)">
 							<i class="el-icon-menu"></i>
-							<span>{{subItem.authName}}</span>
+							<span>{{subItem.meta.title}}</span>
 						</el-menu-item>
 
 					</el-submenu>
@@ -63,12 +64,23 @@ export default {
 			window.sessionStorage.clear()
 			this.$router.push('/login')
 		},
-		async getMenuList() {
-			const { data: res } = await this.$http.get('menus')
-			if (res.meta.status !== 200) this.$message.error(res.meta.msg)
-			this.menulist = res.data
-			console.log(res)
+		//this.$store.getters.permission_routes
+		getMenuList() {
+			//this.menulist = this.$store.getters.permission_routes
+			var allRoutes = this.$store.getters.permission_routes
+			for (var i = 0; i < allRoutes.length; i++) {
+				if (allRoutes[i].children) {
+					this.menulist.push(allRoutes[i])
+				}
+			}
+			console.log(this.menulist, '         111')
 		},
+		// async getMenuList() {
+		// 	const { data: res } = await this.$http.get('menus')
+		// 	if (res.meta.status !== 200) this.$message.error(res.meta.msg)
+		// 	this.menulist = res.data
+		// 	console.log(res)
+		// },
 		toggleCollapse() {
 			this.isCollapse = !this.isCollapse
 		},
