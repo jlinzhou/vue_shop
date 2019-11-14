@@ -6,6 +6,7 @@ const whiteList = ['/login', '/auth-redirect']
 router.beforeEach(async (to, from, next) => {
   //const tokenStr = window.sessionStorage.getItem('token')
   const hasToken = getToken()
+
   if (hasToken) {
     if (to.path === '/login') {
       next()
