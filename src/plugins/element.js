@@ -23,7 +23,8 @@ import {
     Tooltip,
     Pagination,
     Dialog,
-    notification
+    notification,
+    loading
 } from 'element-ui'
 Vue.use(Button)
 Vue.use(Form)
@@ -47,5 +48,6 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(loading)
 Vue.prototype.$message = Message
 Vue.prototype.$notify = notification
